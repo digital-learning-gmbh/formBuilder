@@ -65,7 +65,7 @@ const FormBuilder = function (opts, element, $) {
     beforeStop: (evt, ui) => h.beforeStop.call(h, evt, ui),
     start: (evt, ui) => h.startMoving.call(h, evt, ui),
     stop: (evt, ui) => h.stopMoving.call(h, evt, ui),
-    cancel: ['input', 'select', 'textarea', '.disabled-field', '.form-elements', '.btn', 'button', '.is-locked'].join(
+    cancel: ['input', 'select', 'textarea', '.disabled-field', '.fb-form-elements', '.btn', 'button', '.is-locked'].join(
       ', ',
     ),
     placeholder: 'frmb-placeholder',
@@ -318,7 +318,7 @@ const FormBuilder = function (opts, element, $) {
 
     fieldOptions.push(optionsWrap)
 
-    return m('div', fieldOptions, { className: 'form-group field-options' }).outerHTML
+    return m('div', fieldOptions, { className: 'fb-form-group field-options' }).outerHTML
   }
 
   const defaultFieldAttrs = type => {
@@ -639,7 +639,7 @@ const FormBuilder = function (opts, element, $) {
     })()
 
     const inputWrap = `<div class="input-wrap">${textInput}</div>`
-    return `<div class="form-group ${name}-wrap">${label}${inputWrap}</div>`
+    return `<div class="fb-form-group ${name}-wrap">${label}${inputWrap}</div>`
   }
 
   /**
@@ -681,7 +681,7 @@ const FormBuilder = function (opts, element, $) {
 
     const select = m('select', optis, selectAttrs).outerHTML
     const inputWrap = `<div class="input-wrap">${select}</div>`
-    return `<div class="form-group ${name}-wrap">${label}${inputWrap}</div>`
+    return `<div class="fb-form-group ${name}-wrap">${label}${inputWrap}</div>`
   }
 
   const boolAttribute = (name, values, labels = {}) => {
@@ -715,7 +715,7 @@ const FormBuilder = function (opts, element, $) {
     right = m('div', right, { className: 'input-wrap' }).outerHTML
 
     return m('div', left.concat(right), {
-      className: `form-group ${name}-wrap`,
+      className: `fb-form-group ${name}-wrap`,
     }).outerHTML
   }
 
@@ -752,7 +752,7 @@ const FormBuilder = function (opts, element, $) {
     styleField += '</div>'
 
     styleField = m('div', [styleLabel, styleField], {
-      className: 'form-group style-wrap',
+      className: 'fb-form-group style-wrap',
     })
 
     return styleField.outerHTML
@@ -783,7 +783,7 @@ const FormBuilder = function (opts, element, $) {
     const inputLabel = `<label for="${inputConfig.id}">${attrLabel}</label>`
 
     return m('div', [inputLabel, inputWrap], {
-      className: `form-group ${attribute}-wrap`,
+      className: `fb-form-group ${attribute}-wrap`,
     }).outerHTML
   }
 
@@ -819,7 +819,7 @@ const FormBuilder = function (opts, element, $) {
     const select = m('select', selectOptions, selectAttrs)
     const inputWrap = m('div', select, { className: 'input-wrap' })
     const attrWrap = m('div', [label, inputWrap], {
-      className: `form-group ${selectAttrs.name}-wrap`,
+      className: `fb-form-group ${selectAttrs.name}-wrap`,
     })
 
     return attrWrap.outerHTML
@@ -878,7 +878,7 @@ const FormBuilder = function (opts, element, $) {
       }
 
       attributefield = m('div', [attributeLabel, inputWrap], {
-        className: `form-group ${attribute}-wrap`,
+        className: `fb-form-group ${attribute}-wrap`,
         style: `display: ${visibility}`,
       })
     }
@@ -964,7 +964,7 @@ const FormBuilder = function (opts, element, $) {
 
     liContents.push(m('div', '', { className: 'prev-holder' }))
     const formElements = m('div', [advFields(values), m('a', mi18n.get('close'), { className: 'close-field' })], {
-      className: 'form-elements',
+      className: 'fb-form-elements',
     })
 
     const editPanel = m('div', formElements, {
@@ -1104,7 +1104,7 @@ const FormBuilder = function (opts, element, $) {
     }
   }
 
-  const previewSelectors = ['.form-elements input', '.form-elements select', '.form-elements textarea'].join(', ')
+  const previewSelectors = ['.fb-form-elements input', '.fb-form-elements select', '.fb-form-elements textarea'].join(', ')
 
   // Save field on change
   $stage.on('change blur keyup click', previewSelectors, throttle(saveAndUpdate, DEFAULT_TIMEOUT, { leading: false }))
@@ -1247,7 +1247,7 @@ const FormBuilder = function (opts, element, $) {
    */
   $stage.on('change', '.fld-multiple', e => {
     const newType = e.target.checked ? 'checkbox' : 'radio'
-    const $options = $('.option-selected', $(e.target).closest('.form-elements'))
+    const $options = $('.option-selected', $(e.target).closest('.fb-form-elements'))
     $options.each(i => ($options[i].type = newType))
     return newType
   })
@@ -1312,7 +1312,7 @@ const FormBuilder = function (opts, element, $) {
   // Update button style selection
   $stage.on('click', '.style-wrap button', e => {
     const $button = $(e.target)
-    const $attrsWrap = $button.closest('.form-elements')
+    const $attrsWrap = $button.closest('.fb-form-elements')
     const styleVal = $button.val()
     const $btnStyle = $('.btn-style', $attrsWrap)
     $btnStyle.val(styleVal)

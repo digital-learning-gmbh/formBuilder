@@ -2,12 +2,12 @@
 import utils from './utils'
 
 const processClassName = (data, field) => {
-  // wrap the output in a form-group div & return
-  let className = data.id ? `formbuilder-${data.type} form-group field-${data.id}` : ''
+  // wrap the output in a fb-form-group div & return
+  let className = data.id ? `formbuilder-${data.type} fb-form-group field-${data.id}` : ''
 
   if (data.className) {
     let classes = data.className.split(' ')
-    // Lift any col- and row- type class to the form-group wrapper. The row- class denotes the row group it should go to
+    // Lift any col- and row- type class to the fb-form-group wrapper. The row- class denotes the row group it should go to
     classes = classes.filter(className => /^col-(xs|sm|md|lg)-([^\s]+)/.test(className) || className.startsWith('row-'))
 
     if (classes && classes.length > 0) {

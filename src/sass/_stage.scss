@@ -254,7 +254,7 @@
   .prev-holder {
     display: block;
 
-    .form-group {
+    .fb-form-group {
       margin: 0;
     }
 
@@ -262,7 +262,7 @@
       min-height: 125px;
     }
 
-    .form-group > label:not([class='formbuilder-checkbox-label']) {
+    .fb-form-group > label:not([class='formbuilder-checkbox-label']) {
       display: none;
     }
 
@@ -481,7 +481,7 @@
   }
 
   .form-field {
-    .form-group {
+    .fb-form-group {
       width: 100%;
       clear: left;
       float: none;
@@ -490,7 +490,7 @@
 
   .col-md-6,
   .col-md-8 {
-    .form-elements {
+    .fb-form-elements {
       width: 100%;
     }
   }
@@ -511,7 +511,7 @@
     }
   }
 
-  .form-elements {
+  .fb-form-elements {
     padding: 10px 5px;
     background: #f7f7f7;
     border-radius: 3px;

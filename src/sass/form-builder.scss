@@ -30,15 +30,15 @@
   }
 }
 
-.form-elements,
-.form-group,
-.multi-row span,
+.fb-form-elements,
+.fb-form-group,
+.fb-multi-row span,
 textarea {
   display: block;
 }
 
-.form-elements::after,
-.form-group::after {
+.fb-form-elements::after,
+.fb-form-group::after {
   content: '.';
   display: block;
   height: 0;
@@ -46,7 +46,7 @@ textarea {
   visibility: hidden;
 }
 
-.form-elements .field-options div:hover,
+.fb-form-elements .field-options div:hover,
 .frmb .legend,
 .frmb .prev-holder {
   cursor: move;
