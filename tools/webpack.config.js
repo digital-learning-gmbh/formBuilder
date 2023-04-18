@@ -63,7 +63,12 @@ const webpackConfig = {
       },
       {
         test: /\.lang$/,
-        loader: 'file-loader?name=[path][name].[ext]&context=./src',
+        loader: 'file-loader',
+        options: {
+          limit: 1000,
+          name : '[path][name].[ext]',
+          context : './src'
+        }
       },
       {
         test: /\.scss$/,
